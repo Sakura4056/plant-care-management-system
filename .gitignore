@@ -1,0 +1,111 @@
+# ==========================================
+# 植物养护管理系统 - Git忽略文件
+# ==========================================
+
+# 环境配置文件
+.env
+.env.local
+.env.*.local
+
+# 日志文件
+*.log
+logs/
+*.log.*
+
+# 临时文件
+*.tmp
+*.temp
+.cache/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE配置
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-lock.yaml
+
+# 前端构建产物
+dist/
+build/
+.vite/
+
+# 数据库文件
+*.db
+*.db-journal
+*.sql.gz
+data/
+
+# 上传文件
+uploads/
+upload/
+static/upload/
+
+# 备份文件
+backups/
+backup/
+*.bak
+*.backup
+
+# 压缩文件
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+
+# Java虚拟机
+hs_err_pid*
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 本地环境变量
+local.properties
+
+# 密钥文件
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# 其他
+*.pid
+*.seed
+*.pid.lock
