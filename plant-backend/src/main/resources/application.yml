@@ -1,0 +1,84 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: plant-backend
+
+  # 双数据源配置
+  datasource:
+    # 主数据源 (MySQL) - 端口为13306
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:13306/db_plant_official?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+    # 次数据源 (SQLite)
+    secondary:
+      driver-class-name: org.sqlite.JDBC
+      jdbc-url: jdbc:sqlite:data/user_plant_local.db
+      # SQLite无需用户名密码，保持空即可
+
+  # Redis 配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      password: 123456 # 如Redis无密码请注释/删除这一行
+      timeout: 10000ms # 增加超时配置，提升稳定性
+
+  # 文件上传限制
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
+
+  # 邮件配置
+  mail:
+    host: smtp.163.com
+    port: 465
+    protocol: smtp
+    username: sakura010903@163.com
+    password: FLv2T9wTgXNZ4E3A
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            required: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+
+# MyBatis Plus 配置 (全局)
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# JWT 配置
+jwt:
+  secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437 # 随机256位密钥
+  expiration: 86400000 # 24小时（毫秒）
+  header: Authorization
+
+# 日志
+logging:
+  level:
+    com.plant.backend: DEBUG
+    org.springframework: INFO
+    com.zaxxer.hikari: INFO # 增加连接池日志，便于排查连接问题
+
+# 应用特定配置
+app:
+  file-upload-path: ./data/uploads/
+
+
+
